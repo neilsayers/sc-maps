@@ -1,0 +1,76 @@
+.scm-map-display {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.scm-map-empty {
+    opacity: 0.7;
+    font-style: italic;
+}
+
+/* Teardrop pin: a rotated square with three square corners and one
+   round one, drawn with a single border-radius shorthand — the icon
+   inside is counter-rotated so it stays upright. */
+.scm-marker-pin {
+    width: 34px;
+    height: 34px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    background: var(--scm-colour, #00854A);
+    border: 2px solid #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scm-marker-pin__icon {
+    width: 16px;
+    height: 16px;
+    transform: rotate(45deg);
+    background-color: #fff;
+    -webkit-mask-image: var(--scm-icon);
+    mask-image: var(--scm-icon);
+    -webkit-mask-size: contain;
+    mask-size: contain;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    -webkit-mask-position: center;
+    mask-position: center;
+}
+
+.scm-marker-pin__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    transform: rotate(45deg);
+}
+
+.scm-popup {
+    max-width: 240px;
+}
+
+.scm-popup img {
+    display: block;
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 8px;
+}
+
+.scm-popup h3 {
+    margin: 0 0 4px;
+    font-size: 15px;
+}
+
+.scm-popup p {
+    margin: 0 0 8px;
+    font-size: 13px;
+}
+
+.scm-popup a {
+    font-size: 13px;
+    font-weight: 600;
+}
