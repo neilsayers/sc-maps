@@ -49,6 +49,8 @@ final class DocumentationPage implements Hookable
         'zoom' => 'Initial zoom level. Default: auto — fits every marker in view.',
         'center_lat' => 'Force the map to open centred on this latitude instead of auto-fitting. Pair with center_lng.',
         'center_lng' => 'Force the map to open centred on this longitude instead of auto-fitting. Pair with center_lat.',
+        'on_click' => '"popup" (default) — clicking a marker opens its name/excerpt/image/link popup. "none" turns that off, e.g. for a page building its own click behaviour.',
+        'on_hover' => '"none" (default), or "tooltip" — hovering a marker shows its name in a small bubble above it and turns the pin white for the duration.',
     ];
 
     /**

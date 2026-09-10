@@ -26,6 +26,17 @@ final class MapShortcode implements Hookable
         'zoom' => '',
         'center_lat' => '',
         'center_lng' => '',
+        // 'popup' (default) matches every existing embed of this
+        // plugin — clicking a marker opens the name/excerpt/image/link
+        // popup it always has. 'none' turns that off for a site that's
+        // building its own click behaviour instead (e.g. a page with
+        // its own list of markers alongside the map).
+        'on_click' => 'popup',
+        // 'none' (default) matches every existing embed. 'tooltip'
+        // shows the marker's name in a small bubble above it on
+        // hover, and turns the pin white for the duration — see
+        // assets/js/map.js.
+        'on_hover' => 'none',
     ];
 
     public function __construct(private Settings $settings)
@@ -134,6 +145,8 @@ final class MapShortcode implements Hookable
             'center' => ($atts['center_lat'] !== '' && $atts['center_lng'] !== '')
                 ? ['lat' => (float) $atts['center_lat'], 'lng' => (float) $atts['center_lng']]
                 : null,
+            'onClick' => $atts['on_click'] === 'none' ? 'none' : 'popup',
+            'onHover' => $atts['on_hover'] === 'tooltip' ? 'tooltip' : 'none',
         ];
 
         \ob_start();

@@ -74,3 +74,13 @@
     font-size: 13px;
     font-weight: 600;
 }
+
+/* Only rendered when a map is embedded with on_hover="tooltip" (see
+   MapShortcode's DEFAULT_ATTS) — a plain, generic bubble; a theme
+   wanting its own brand colours/font here overrides .scm-marker-tooltip
+   directly rather than this plugin trying to guess them. */
+.scm-marker-tooltip {
+    font-size: 13px;
+    font-weight: 600;
+    padding: 4px 10px;
+}
