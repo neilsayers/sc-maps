@@ -4,7 +4,7 @@ Tags: map, leaflet, openstreetmap, locations
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.1
-Stable tag: 0.2.0
+Stable tag: 0.2.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,12 @@ runtime, even though the underlying patterns (and the Leaflet location picker) a
 three can be activated or deactivated without affecting the others.
 
 == Changelog ==
+
+= 0.2.1 =
+* The "SC Maps" settings menu now reads "SC Maps" in the admin sidebar (not just the page title) and has moved down
+  near the bottom of the menu, alongside SC Events Manager and SC Room Bookings's own settings screens — keeps the
+  admin sidebar's top area for actual content rather than plugin settings. The "Map Locations" menu that lists
+  marker post types is unaffected — it stays at the top with other content.
 
 = 0.2.0 =
 * Marker types now nest under a single "Map Locations" top-level admin menu instead of each type getting its own —

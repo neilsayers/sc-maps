@@ -62,12 +62,12 @@ final class MarkerTypesPage implements Hookable
     {
         \add_menu_page(
             'SC Maps',
-            'Maps',
+            'SC Maps',
             'manage_options',
             self::PAGE_SLUG,
             [$this, 'renderPage'],
             'dashicons-location-alt',
-            28
+            92
         );
 
         /*
