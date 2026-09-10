@@ -1,6 +1,14 @@
 .scm-map-display {
     width: 100%;
     border-radius: 8px;
+    /* Leaflet's own panes run up to z-index 700 (tooltip-pane) inside
+       here — without a stacking context of its own, that's the page's
+       global stacking order, not just this map's, so those panes can
+       paint over a host site's fixed/sticky header despite it having
+       a much higher z-index than this element itself. isolate scopes
+       every z-index Leaflet sets to inside this box, however high,
+       the same way a host page scopes its own. */
+    isolation: isolate;
 }
 
 .scm-map-empty {
