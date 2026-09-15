@@ -125,58 +125,16 @@ final class MapShortcode implements Hookable
     }
 
     /**
-     * A single ad-hoc marker's own map — same Leaflet display and
-     * styled pin as render()/scm_render_map(), for a point that isn't
-     * (and doesn't need to be) one of this plugin's own marker posts,
-     * e.g. an event's own venue coordinates. Only lat/lng are
-     * required; every other field just feeds the marker's popup
-     * (name/excerpt/image/link) the same way a real marker post's
-     * data would — omit view_url for no link, omit name for an
-     * unlabelled pin. map.js centres a lone marker on itself, so
-     * there's no zoom/center to pass.
-     *
-     * @param array{lat: float|string, lng: float|string, name?: string, excerpt?: string, featured_image_url?: string, view_url?: string, type_label?: string, colour?: string, icon?: string} $marker
-     * @param array<string, mixed> $atts Same as render(), minus type/taxonomy/term/ids/limit — there's nothing to query.
-     */
-    public static function renderSingleMarker(array $marker, array $atts = []): string
-    {
-        $shaped = [
-            'id' => 0,
-            'type' => '',
-            'type_label' => (string) ($marker['type_label'] ?? ''),
-            'name' => (string) ($marker['name'] ?? ''),
-            'excerpt' => (string) ($marker['excerpt'] ?? ''),
-            'content' => '',
-            'featured_image_url' => (string) ($marker['featured_image_url'] ?? ''),
-            'view_url' => (string) ($marker['view_url'] ?? ''),
-            'lat' => (float) $marker['lat'],
-            'lng' => (float) $marker['lng'],
-            'colour' => (string) ($marker['colour'] ?? Settings::DEFAULT_COLOURS[0]),
-            'icon' => (string) ($marker['icon'] ?? ''),
-            'terms' => [],
-        ];
-
-        return self::renderMarkers([$shaped], $atts + self::DEFAULT_ATTS);
-    }
-
-    /**
      * @param array<string, mixed> $atts
      */
     private static function renderWith(array $atts, Settings $settings): string
-    {
-        return self::renderMarkers(self::query($atts, $settings), $atts);
-    }
-
-    /**
-     * @param array<int, array<string, mixed>> $markers
-     * @param array<string, mixed> $atts
-     */
-    private static function renderMarkers(array $markers, array $atts): string
     {
         // Styles are already enqueued unconditionally — see
         // enqueueAssets(). Only the script is lazy, deferred until a
         // map is actually being rendered.
         \wp_enqueue_script('scm-map');
+
+        $markers = self::query($atts, $settings);
 
         $height = \max(200, (int) $atts['height']);
         $id = \uniqid('scm-map-');

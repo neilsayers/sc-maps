@@ -52,32 +52,3 @@ if (! function_exists('scm_the_map')) {
         echo scm_render_map($args); // phpcs:ignore WordPress.Security.EscapeOutput -- already-escaped HTML from MapShortcode::render().
     }
 }
-
-if (! function_exists('scm_render_marker')) {
-    /**
-     * The plugin's own Leaflet map and styled pin, for a single point
-     * that isn't (and doesn't need to be) one of this plugin's own
-     * marker posts — e.g. another plugin's own venue/address field.
-     * Only lat/lng are required.
-     *
-     * @param array{lat: float|string, lng: float|string, name?: string, excerpt?: string, featured_image_url?: string, view_url?: string, type_label?: string, colour?: string, icon?: string} $marker
-     * @param array<string, mixed> $args Same as scm_render_map(), minus type/taxonomy/term/limit — there's nothing to query.
-     */
-    function scm_render_marker(array $marker, array $args = []): string
-    {
-        return MapShortcode::renderSingleMarker($marker, $args);
-    }
-}
-
-if (! function_exists('scm_the_marker')) {
-    /**
-     * Echoes scm_render_marker() — for direct use in a template file.
-     *
-     * @param array{lat: float|string, lng: float|string, name?: string, excerpt?: string, featured_image_url?: string, view_url?: string, type_label?: string, colour?: string, icon?: string} $marker
-     * @param array<string, mixed> $args
-     */
-    function scm_the_marker(array $marker, array $args = []): void
-    {
-        echo scm_render_marker($marker, $args); // phpcs:ignore WordPress.Security.EscapeOutput -- already-escaped HTML from MapShortcode::renderSingleMarker().
-    }
-}
