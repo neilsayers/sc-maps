@@ -4,7 +4,7 @@ Tags: map, leaflet, openstreetmap, locations
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.1
-Stable tag: 0.2.1
+Stable tag: 0.3.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,10 @@ runtime, even though the underlying patterns (and the Leaflet location picker) a
 three can be activated or deactivated without affecting the others.
 
 == Changelog ==
+
+= 0.3.2 =
+* Add an uninstall script: deleting the plugin now removes its settings and transients. Markers and marker-type
+  taxonomies are left in place, as they're the site's own content.
 
 = 0.2.1 =
 * The "SC Maps" settings menu now reads "SC Maps" in the admin sidebar (not just the page title) and has moved down
