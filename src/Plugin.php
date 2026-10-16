@@ -11,6 +11,7 @@ use SCMaps\Frontend\MapShortcode;
 use SCMaps\MetaBoxes\MarkerDetailsMetaBox;
 use SCMaps\PostTypes\MarkerPostTypes;
 use SCMaps\Settings\Settings;
+use SCMaps\Setup\UpdateChecker;
 use SCMaps\Taxonomies\MarkerTaxonomies;
 
 /**
@@ -39,6 +40,7 @@ final class Plugin
     public function boot(): void
     {
         $features = [
+            new UpdateChecker(),
             new MarkerTypesPage($this->settings),
             new TaxonomiesPage($this->settings),
             new LocationsMenu(),

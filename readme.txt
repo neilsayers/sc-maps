@@ -4,7 +4,7 @@ Tags: map, leaflet, openstreetmap, locations
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.1
-Stable tag: 0.3.2
+Stable tag: 0.3.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,13 @@ runtime, even though the underlying patterns (and the Leaflet location picker) a
 three can be activated or deactivated without affecting the others.
 
 == Changelog ==
+
+= 0.3.3 =
+* Added self-hosted update checking (Setup\UpdateChecker, using the vendored, build-step-free `plugin-update-checker`
+  library) pointed at this plugin's own GitHub repo, so installs get the normal wp-admin "Update available" notice
+  without needing to be listed on WordPress.org.
+* Added automatic releases: a GitHub Actions workflow publishes vX.Y.Z with a correctly-named sc-maps.zip whenever the
+  plugin header's Version changes — no manual tagging.
 
 = 0.3.2 =
 * Add an uninstall script: deleting the plugin now removes its settings and transients. Markers and marker-type
