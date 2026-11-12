@@ -4,7 +4,7 @@ Tags: map, leaflet, openstreetmap, locations
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.1
-Stable tag: 0.3.3
+Stable tag: 0.3.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,10 @@ runtime, even though the underlying patterns (and the Leaflet location picker) a
 three can be activated or deactivated without affecting the others.
 
 == Changelog ==
+
+= 0.3.4 =
+* Added a `scm_marker` filter on each marker's data, so a theme can override its name, image, link etc. (e.g. to pull them from a related post).
+* Fixed: marker colours were never applied when markers were added before the map had a view (pins fell back to the default green).
 
 = 0.3.3 =
 * Added self-hosted update checking (Setup\UpdateChecker, using the vendored, build-step-free `plugin-update-checker`

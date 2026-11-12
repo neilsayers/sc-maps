@@ -104,7 +104,7 @@ final class MarkerListing
 
         $markerType = $settings->getMarkerType($post->post_type);
 
-        return [
+        $marker = [
             'id' => $post->ID,
             'type' => $post->post_type,
             'type_label' => $markerType['label_singular'] ?? $post->post_type,
@@ -119,6 +119,10 @@ final class MarkerListing
             'icon' => $markerType['icon'] ?? '',
             'terms' => self::terms($post->ID, $post->post_type, $settings),
         ];
+
+        // Lets a theme override any part of a marker (name, image, link…) —
+        // e.g. to pull them from a related post instead of the marker itself.
+        return \apply_filters('scm_marker', $marker, $post);
     }
 
     /**

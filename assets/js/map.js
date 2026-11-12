@@ -101,9 +101,18 @@
             // its className only reaches the wrapping <div>, not the
             // element built from html — so the colour is set directly
             // on that element once it exists in the DOM.
+            // Layers added before the map has a view are deferred by
+            // Leaflet, so the element doesn't exist yet — wait for 'add'.
             var pinEl = leafletMarker.getElement();
             if (pinEl) {
                 pinEl.style.background = marker.colour;
+            } else {
+                leafletMarker.once('add', function () {
+                    pinEl = leafletMarker.getElement();
+                    if (pinEl) {
+                        pinEl.style.background = marker.colour;
+                    }
+                });
             }
 
             if (config.onClick !== 'none') {
