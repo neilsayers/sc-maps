@@ -23,6 +23,11 @@
     }
 
     function popupHtml(marker) {
+        // A theme can supply the whole bubble (see the scm_marker filter).
+        if (marker.popup_html) {
+            return marker.popup_html;
+        }
+
         var html = '<div class="scm-popup">';
 
         if (marker.featured_image_url) {
@@ -44,7 +49,7 @@
         return html;
     }
 
-    // Toggles a marker's hovered look (pin turns white, name tooltip
+    // Toggles a marker's hovered look (pin lightens to a 50% tint of its colour, name tooltip
     // shows) — pulled out of the mouseover/mouseout handlers below so
     // the exact same function can also be called from outside this
     // file (see leafletMarker.scmSetHover, attached further down),
@@ -52,7 +57,9 @@
     // to drive a specific marker's hover state.
     function setHoverState(leafletMarker, pinEl, marker, isHovered) {
         if (pinEl) {
-            pinEl.style.background = isHovered ? '#fff' : marker.colour;
+            pinEl.style.background = isHovered
+                ? 'color-mix(in srgb, ' + marker.colour + ' 50%, #fff)'
+                : marker.colour;
         }
 
         if (isHovered) {
@@ -116,7 +123,7 @@
             }
 
             if (config.onClick !== 'none') {
-                leafletMarker.bindPopup(popupHtml(marker));
+                leafletMarker.bindPopup(popupHtml(marker), marker.popup_options || {});
             }
 
             if (config.onHover === 'tooltip') {
