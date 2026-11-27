@@ -4,7 +4,7 @@ Tags: map, leaflet, openstreetmap, locations
 Requires at least: 6.6
 Tested up to: 6.9
 Requires PHP: 8.1
-Stable tag: 0.3.5
+Stable tag: 0.3.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -50,6 +50,9 @@ runtime, even though the underlying patterns (and the Leaflet location picker) a
 three can be activated or deactivated without affecting the others.
 
 == Changelog ==
+
+= 0.3.6 =
+* Accessibility: map pins now have an accessible name (the marker's name).
 
 = 0.3.5 =
 * Hovered pins now turn a 50% tint of their own colour instead of plain white.

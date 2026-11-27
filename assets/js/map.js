@@ -102,7 +102,7 @@
 
         markers.forEach(function (marker) {
             var icon = buildIcon(marker);
-            var leafletMarker = L.marker([marker.lat, marker.lng], { icon: icon }).addTo(map);
+            var leafletMarker = L.marker([marker.lat, marker.lng], { icon: icon, title: marker.name, alt: marker.name }).addTo(map);
 
             // divIcon has no first-class "background colour" option —
             // its className only reaches the wrapping <div>, not the
